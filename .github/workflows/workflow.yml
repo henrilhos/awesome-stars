@@ -4,6 +4,9 @@ on:
   schedule:
     -
       cron: '30 0 * * *'
+  workflow_dispatch: {}
+permissions:
+  contents: write
 jobs:
   build:
     name: 'stargazed update'
@@ -11,12 +14,12 @@ jobs:
     steps:
       -
         name: 'Use GitHub Actions'
-        uses: actions/checkout@v1
+        uses: actions/checkout@v4
       -
-        name: 'Use Node.js 10.x'
-        uses: actions/setup-node@v1
+        name: 'Use Node.js 20.x'
+        uses: actions/setup-node@v4
         with:
-          node-version: 10.x
+          node-version: 20.x
       -
         name: 'Install Package'
         run: 'npm install --global stargazed'
